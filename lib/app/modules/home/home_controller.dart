@@ -7,12 +7,12 @@ part 'home_controller.g.dart';
 class HomeController = _HomeControllerBase with _$HomeController;
 
 abstract class _HomeControllerBase with Store {
-  NewsRepository repository;
+  final NewsRepository repository;
 
   _HomeControllerBase(this.repository);
 
   @observable
-  List<News> data;
+  List<News>? data;
 
   @observable
   bool error = false;
@@ -20,9 +20,10 @@ abstract class _HomeControllerBase with Store {
   @action
   getNews() async {
     final news = await repository.fetchNews();
-    if (news != null)
+    if (news != null) {
       data = news;
-    else
+    } else {
       error = true;
+    }
   }
 }

@@ -1,6 +1,6 @@
 class News {
-  String link;
-  String title;
+  String? link;
+  String? title;
 
   News({this.link, this.title});
 
@@ -10,9 +10,9 @@ class News {
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['link'] = this.link;
-    data['title'] = this.title;
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data['link'] = link;
+    data['title'] = title;
     return data;
   }
 }
